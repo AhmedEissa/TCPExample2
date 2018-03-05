@@ -15,16 +15,11 @@ class TCPClient {
             DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
             BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-            System.out.println("Type your text: \n or type end to terminate connection.");
+            System.out.println("Type your message:");
             sentence = inFromUser.readLine();
-            if (sentence.equals("end")) {
-                outToServer.writeBytes("connectionTerminated");
-                break;
-            }
             outToServer.writeBytes(sentence + '\n');
             modifiedSentence = inFromServer.readLine();
             System.out.println("FROM SERVER: " + modifiedSentence);
         }
-        clientSocket.close();
     }
 }

@@ -17,10 +17,6 @@ class TCPServer {
                 DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
 
                 clientSentence = inFromClient.readLine();
-                if (clientSentence.equals("connectionTerminated")) {
-                    connectionSocket.close();
-                    break;
-                }
                 System.out.println("Received: " + clientSentence);
                 writeToFile(clientSentence);
                 capitalizedSentence = clientSentence.toUpperCase() + '\n';
